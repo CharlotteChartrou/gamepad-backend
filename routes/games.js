@@ -36,10 +36,12 @@ router.post("/games/:id/reviews", isAuthentificated, async (req, res) => {
         const newReview = new Review ({
 title : req.body.title, 
 text : req.body.text, 
+owner : req.user
 
         })
-
+console.log(newReview);
         await newReview.save();
+
         res.status(201).json("review upload")
 
     } catch (error) {res.status(400).json(error.message)}
