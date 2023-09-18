@@ -5,6 +5,9 @@ const User = require("../models/User");
 const SHA56= require("crypto-js/sha256");
 const encBase64 = require("crypto-js/enc-base64")
 const uid2 = require("uid2")
+const isAuthentificated = require("../middlewares/isAuthenticated");
+const app = express();
+app.use(express.json());
 
 router.post("/signup", async (req, res) => {
     const password = req.body.password
@@ -57,6 +60,14 @@ if (newHash === foundUser.hash) {
         res.status(400).json(error.message)
     }
 
+})
+
+router.get("/user", isAuthentificated, async (req, res) => {
+    try {
+      
+console.log(req.user) 
+        
+        res.status(200).json(req.user)} catch (error) {res.status(400).json("error")}
 })
 
 

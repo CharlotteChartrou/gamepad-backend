@@ -5,7 +5,10 @@ const User = mongoose.model('User', {
     email :  String,
     token : String, 
     hash: String, 
-    salt: String
+    salt: String,
+    GamesCollection: {
+        type: [mongoose.Schema.Types.ObjectId],
+        default: [],}
 })
 
 module.exports= User;
