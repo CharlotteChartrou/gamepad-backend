@@ -3,12 +3,18 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 require("dotenv").config();
 
+const cloudinary = require("cloudinary").v2;
 
 const app = express();
 app.use(express.json());
 app.use(cors());
 
 mongoose.connect(`mongodb+srv://charlottechartrou:el8oir8tWWuLxjF7@cluster0.2ashdxs.mongodb.net/gamepad`);
+cloudinary.config({
+    cloud_name: "dujlkkvmc",
+    api_key: "551169559462953",
+    api_secret: "RmE-BoJjONIPqMQ_6yrC2kTsguE"
+  });
 
 
 app.get("/", (req, res)=> {

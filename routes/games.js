@@ -13,10 +13,11 @@ router.get("/games", async (req, res)=>{
     try {
         const search = req.query.search || "";
         const ordering = req.query.ordering || "";
+        const page = req.query.page || "";
     const my_api_key = process.env.MY_API_KEY;
-    console.log(ordering);
+/*     console.log(ordering); */
 
-    const response = await axios.get(`https://api.rawg.io/api/games?key=${my_api_key}&search=${search}&ordering=${ordering}`)
+    const response = await axios.get(`https://api.rawg.io/api/games?key=${my_api_key}&search=${search}&ordering=${ordering}&page=${page}`)
     res.status(200).json(response.data)}
     catch (error) {res.status(400).json(error.response)}
 })
